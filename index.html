@@ -1,37 +1,60 @@
+<!-- <h2 id="myText">Hello, style me with JavaScript!</h2> <button onclick="styleText()">Style Text</button> -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
 </head>
 <style>
-    h2{
-        margin-left: 2vh;
+    body{
+        background-color: rgb(175, 171, 171);
     }
-    input{
-        margin-left: 2vh;
+h1{
+    color: #01363b;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 8vh;
+}
+    li {
+        margin-right: 5px;
+        margin-bottom: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
+    input {
+        color: aliceblue !important;
+        /* margin-top: 39vh !important; */
+        background-color: rgb(117, 101, 101) !important;
+    }
 </style>
-<body>
-    <h2>Expense</h2>
 
-    <div class="input-group">
-      <input type="text" id="naam" placeholder="Enter name">
-      <input type="number" id="paise" placeholder="Enter amount">
-      <button onclick="addExpense()">Add Expense</button>
-      <button onclick="delet()" >delete all Expense</button>
+<body class="container">
+    <div class="ap">
+
+        <h1>Todo - app</h1>
+
+        <center>
+            <button id="sn" onclick="send()" class="btn btn-success m-3">Send</button>
+            <button onclick="delet()" class="btn btn-danger">Delete All</button>
+        </center>
+
+        <ul id="ul">
+
+        </ul>
+        <input type="text" id="inp" class="form-control">
     </div>
-  
-    <ul id="expenseList"></ul>
-  
-    <div class="total">Total Expense: $<span id="totalExpense">0</span></div>
-  
 
 
 
-<script src="app.js"></script>
+
+
+
+
+    <script src="app.js"></script>
 </body>
+
 </html>

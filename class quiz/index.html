@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMIT - Quiz Application</title>
+</head>
+
+<body>
+    <center>
+        <h1>Quiz Question</h1>
+        <h3>Believe in yourself you are stronger than you think</h3>
+        <hr>
+        <div>
+            <div>
+                <p id="que"></p>
+            </div>
+            <div>
+                <input onclick="btnWork()" type="radio" name="q" id="r1">
+                <label id="opt1" for=""></label>
+            </div>
+            <div>
+                <input onclick="btnWork()" type="radio" name="q" id="r2">
+                <label id="opt2" for=""></label>
+            </div>
+            <div>
+                <input onclick="btnWork()" type="radio" name="q" id="r3">
+                <label id="opt3" for=""></label>
+            </div>
+        </div>
+        <br>
+        <button id="btn" disabled onclick="loadnext()">NEXT</button>
+    </center>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        var htmlQuestions = [
+            {
+                question: "What does HTML stand for?",
+                option1: "Hyper Trainer Marking Language",
+                option2: "Hyper Text Markup Language",
+                option3: "Hyper Text Marketing Language",
+                correct: "Hyper Text Markup Language"
+            },
+            {
+                question: "Which HTML tag is used to define an internal style sheet?",
+                option1: "<style>",
+                option2: "<css>",
+                option3: "<script>",
+                correct: "<style>"
+            },
+            {
+                question: "Which HTML attribute is used to define inline styles?",
+                option1: "class",
+                option2: "style",
+                option3: "font",
+                correct: "style"
+            },
+            {
+                question: "What is the correct HTML element for inserting a line break?",
+                option1: "<break>",
+                option2: "<br>",
+                option3: "<b>",
+                correct: "<br>"
+            },
+            {
+                question: "Which character is used to indicate an end tag?",
+                option1: "/",
+                option2: "<",
+                option3: "*",
+                correct: "/"
+            },
+            {
+                question: "How can you make a numbered list in HTML?",
+                option1: "<ul>",
+                option2: "<ol>",
+                option3: "<li>",
+                correct: "<ol>"
+            },
+            {
+                question: "Which tag is used to display a picture on a webpage?",
+                option1: "<pic>",
+                option2: "<image>",
+                option3: "<img>",
+                correct: "<img>"
+            },
+            {
+                question: "Which HTML tag is used to make text bold?",
+                option1: "<b>",
+                option2: "<bold>",
+                option3: "<strong>",
+                correct: "<b>"
+            }
+        ]
+
+        var currentQuestion = 0
+        var htmlque = document.getElementById("que")
+        var htmlopt1 = document.getElementById("opt1")
+        var htmlopt2 = document.getElementById("opt2")
+        var htmlopt3 = document.getElementById("opt3")
+        var score = 0
+
+        function btnWork() {
+            getBtn.disabled = false;
+            var selectedOption;
+            if (document.getElementById("r1").checked) {
+                selectedOption = htmlopt1.innerText;
+            } else if (document.getElementById("r2").checked) {
+                selectedOption = htmlopt2.innerText;
+            } else if (document.getElementById("r3").checked) {
+                selectedOption = htmlopt3.innerText;
+            }
+            if (selectedOption === htmlQuestions[currentQuestion].correct) {
+                score++;
+            }
+        }
+
+        var getBtn = document.getElementById('btn')
+
+        htmlque.innerText += htmlQuestions[0].question
+        htmlopt1.innerText += htmlQuestions[0].option1
+        htmlopt2.innerText += htmlQuestions[0].option2
+        htmlopt3.innerText += htmlQuestions[0].option3
+
+
+        function loadnext() {
+            currentQuestion++
+            if (currentQuestion < htmlQuestions.length) {
+                loadQuestion(currentQuestion)
+            } else {
+                Swal.fire({
+                    title: "Good job!",
+                    text: `your score is ${score} and your precentage is ${(score/htmlQuestions.length)*100}%`,
+                    icon: "success"
+                })
+            }
+            getBtn.disabled = true
+        }
+
+        function loadQuestion(index) {
+            var q = htmlQuestions[index]
+            htmlque.innerText = q.question
+            htmlopt1.innerText = q.option1
+            htmlopt2.innerText = q.option2
+            htmlopt3.innerText = q.option3
+
+            document.getElementById("r1").checked = false
+            document.getElementById("r2").checked = false
+            document.getElementById("r3").checked = false
+            var r1 = document.getElementById("r1")
+            var r2 = document.getElementById("r2")
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

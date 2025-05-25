@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>create menu item card</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>create menu item card</h1>
+  
+  <div class="form-container">
+    <input type="text" id="name" placeholder="Name">
+    <input type="number" id="price" placeholder="Price">
+    <input type="text" id="imageUrl" placeholder="Image URL">
+    <button onclick="createCard()">Create</button>
+  </div>
+
+  <script>
+    function createCard() {
+      var name = document.getElementById('name').value 
+      var price = document.getElementById('price').value
+      var imageUrl = document.getElementById('imageUrl').value
+
+    document.getElementById('name').value=""
+    document.getElementById('price').value=""
+    document.getElementById('imageUrl').value=""
+
+
+
+      var card = document.createElement('div')
+      card.className = 'card'
+      card.innerHTML = `
+        <h2>${name}</h2>
+        <p>Price: ${price}</p>
+        <p>discount:10%</p> 
+        <img src="${imageUrl}" alt="Car Image">
+        <div class="card-buttons">
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
+        </div>
+      `
+
+
+      card.querySelector('.delete-btn').onclick = () => {
+        card.remove()
+      }
+
+      card.querySelector('.edit-btn').onclick = () => {
+        document.getElementById('name').value = name
+        document.getElementById('price').value = price
+        document.getElementById('model').value = model
+        document.getElementById('imageUrl').value = imageUrl
+ card.remove() 
+      }   
+      document.getElementById('cardsContainer').appendChild(card)
+      document.getElementsByClassNameAll('.form-container input').forEach(input => input.value = '')
+    }
+
+  </script>
+</body>
+</html>

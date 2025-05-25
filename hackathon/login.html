@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: url('./PNG-image.png') no-repeat center center/cover;
+        height: 110vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    form#loginForm {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 30px 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(255, 0, 255, 0.904);
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    form#loginForm input {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+        transition: border 0.3s ease;
+    }
+
+    form#loginForm input:focus {
+        border-color: #972288;
+        outline: none;
+    }
+
+    form#loginForm button {
+        padding: 12px;
+        background-color: #f74edb;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    form#loginForm button:hover {
+        background-color: #e63295;
+    }
+
+    a {
+        font-size: 15px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        text-decoration: dotted;
+        color: #e41285;
+        margin-left: 1.5vh;
+    }
+
+    a:hover {
+        transition: 1s;
+        background-color: #ddd7da;
+        border-radius: 2vh;
+        color: #9e0a5b;
+    }
+</style>
+
+<body>
+    <form id="loginForm">
+        <input type="text" id="loginEmail" placeholder="Email" required />
+        <input type="password" id="loginPassword" placeholder="Password" required />
+        <button type="submit">Log In</button>
+        <p>Don't have an account? <a href="sign.html">Signup now</a></p>
+    </form>
+
+    <script>
+      
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault()
+            var enteredEmail = document.getElementById("loginEmail").value
+            var enteredPassword = document.getElementById("loginPassword").value
+            var users = JSON.parse(localStorage.getItem("users")) || []
+            var userFound = users.find(user => user.email === enteredEmail && user.password === enteredPassword)
+            if (userFound) {
+                alert('login success')
+                window.location.href = "dashboard.html"
+
+            } else {
+                alert("nhi araha account/ sign up first.")
+            }
+        })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
